@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Sitio en GitHub Pages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+        }
+
+        .status {
+            background: #10b981;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .info-box {
+            background: #f3f4f6;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .info-box h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .info-box code {
+            background: #e5e7eb;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin: 25px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .feature {
+            flex: 1;
+            min-width: 100px;
+            background: #f9fafb;
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .feature span {
+            font-size: 2em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .feature p {
+            font-size: 0.85em;
+            margin: 0;
+            color: #666;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 0.8em;
+            color: #999;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">
+            🚀
+        </div>
+        <h1>¡Mi sitio está vivo!</h1>
+        <div class="status">
+            ✅ GitHub Pages funcionando correctamente
+        </div>
+        
+        <p>
+            Esta página se está sirviendo exitosamente desde <strong>GitHub Pages</strong>.
+            ¡Tu sitio ya está en línea y accesible para todo el mundo!
+        </p>
+
+        <div class="info-box">
+            <h3>📋 Información de tu sitio</h3>
+            <p><strong>📅 Fecha y hora actual:</strong> <span id="datetime"></span></p>
+            <p><strong>🌐 URL actual:</strong> <code id="current-url"></code></p>
+            <p><strong>🖥️ User Agent:</strong> <code id="user-agent" style="font-size: 0.75em; word-break: break-all;"></code></p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <span>⚡</span>
+                <p>Rápido y gratuito</p>
+            </div>
+            <div class="feature">
+                <span>🔒</span>
+                <p>HTTPS incluido</p>
+            </div>
+            <div class="feature">
+                <span>🔄</span>
+                <p>Actualización por Git</p>
+            </div>
+        </div>
+
+        <button onclick="mostrarMensaje()">
+            💡 Haz clic para probar JavaScript
+        </button>
+
+        <div class="footer">
+            <p>🏠 <strong>Mi primer sitio en GitHub Pages</strong> | Editado por última vez: <span id="last-updated"></span></p>
+            <p style="margin-top: 10px;">
+                <a href="https://pages.github.com/" target="_blank" style="color: #667eea; text-decoration: none;">Aprende más sobre GitHub Pages →</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Función para formatear la fecha
+        function actualizarFecha() {
+            const ahora = new Date();
+            const opciones = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            document.getElementById('datetime').textContent = ahora.toLocaleDateString('es-ES', opciones);
+        }
+
+        // Mostrar URL actual
+        document.getElementById('current-url').textContent = window.location.href;
+        
+        // Mostrar User Agent (navegador)
+        document.getElementById('user-agent').textContent = navigator.userAgent;
+        
+        // Mostrar última fecha de modificación del documento
+        if (document.lastModified) {
+            const fechaMod = new Date(document.lastModified);
+            const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('last-updated').textContent = fechaMod.toLocaleDateString('es-ES', opciones);
+        } else {
+            document.getElementById('last-updated').textContent = new Date().toLocaleDateString('es-ES');
+        }
+        
+        // Actualizar fecha cada segundo
+        actualizarFecha();
+        setInterval(actualizarFecha, 1000);
+
+        // Función del botón
+        function mostrarMensaje() {
+            alert('🎉 ¡GitHub Pages funciona perfectamente! Tu sitio está activo y respondiendo correctamente.');
+        }
+
+        // Log en consola para desarrollo
+        console.log('✅ Página cargada correctamente desde GitHub Pages');
+        console.log('📡 URL:', window.location.href);
+    </script>
+</body>
+</html>
